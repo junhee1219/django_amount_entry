@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>서버 ON</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/emoji-smile-fill.svg" type="image/svg+xml">
+	<style>
+        /* 기본 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 4rem;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* 반짝 효과 */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: sparkle 1.5s linear infinite;
+        }
+        @keyframes sparkle {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 1;
+            }
+        }
+        /* 별똥별 효과 */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(transparent, white);
+            opacity: 0.7;
+            /* inline left, top로 시작 위치 지정 */
+            animation: shooting 4s linear forwards;
+        }
+        @keyframes shooting {
+            0% {
+                transform: translate(0, 0) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(300px, 300px) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>서버 ON</h1>
+</div>
+
+<script>
+    // 스파클(반짝임) 효과 생성 함수
+    function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        // 화면 내 랜덤 위치 지정
+        sparkle.style.left = Math.random() * window.innerWidth + 'px';
+        sparkle.style.top = Math.random() * window.innerHeight + 'px';
+        document.body.appendChild(sparkle);
+        // 애니메이션이 끝나면 삭제
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1500);
+    }
+    // 주기적으로 스파클 생성
+    setInterval(createSparkle, 100);
+
+    // shooting-star(별똥별) 효과 여러 개 생성 함수
+    function createShootingStar() {
+        const star = document.createElement('div');
+        star.className = 'shooting-star';
+        // 별똥별 시작 위치를 화면 전체에서 랜덤하게 지정
+        star.style.left = Math.random() * window.innerWidth + 'px';
+        star.style.top = Math.random() * window.innerHeight + 'px';
+        document.body.appendChild(star);
+        // 애니메이션 후 삭제 (4초 애니메이션과 동일)
+        setTimeout(() => {
+            star.remove();
+        }, 4000);
+    }
+    // 주기적으로 별똥별 생성 (1.5초마다 한 번, 동시에 3개 생성)
+    setInterval(() => {
+        for (let i = 0; i < 3; i++) {
+            createShootingStar();
+        }
+    }, 1500);
+</script>
+</body>
+</html>
