@@ -58,7 +58,7 @@ DATABASES = {
         'USER': 'django_prj',
         'PASSWORD': 'Bictechlab!234',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '54323',
     }
 }
 

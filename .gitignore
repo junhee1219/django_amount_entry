@@ -1,9 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/venv
-/__pycache__
-/amount_entry/__pycache__
-/entry_project/__pycache__
-/auth_app/__pycache__
-/auth_app/__pycache__
+**/migrations/
+**/__pycache__/
+/amount
 /.idea

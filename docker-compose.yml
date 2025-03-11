@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-ocr
+    restart: always
+    environment:
+      POSTGRES_USER: django_prj
+      POSTGRES_PASSWORD: Bictechlab!234
+      POSTGRES_DB: amount_entry
+    ports:
+      - "54323:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - AMOUNTNW
+
+volumes:
+  pgdata:
+
+networks:
+  AMOUNTNW:
+    driver: bridge
